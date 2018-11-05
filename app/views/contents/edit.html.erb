@@ -1,0 +1,6 @@
+<%=form_for @content, url:content_path(@content.id), method: :patch do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control',autofocus: true %>
+
+	<%= f.submit :save %>
+<%end%>
