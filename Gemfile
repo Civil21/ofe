@@ -41,7 +41,7 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
-gem 'figaro'
+#gem 'figaro'
 
 gem 'pg'
 
@@ -53,7 +53,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.3.0'
+  gem 'capistrano-figaro-yml', '~> 1.0.2'
   gem 'capistrano3-puma'
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
