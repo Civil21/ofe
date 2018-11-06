@@ -1,0 +1,2 @@
+<h2>Проекти<%if current_user.id=1%><%=link_to "+", new_project_path %> <%end%>:</h2> 
+<%= render @projects %>

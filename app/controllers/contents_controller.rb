@@ -5,7 +5,7 @@ class ContentsController < ApplicationController
 	before_action :thisUser, only:[:edit,:update]
 
 	def show
-		@content = Content.find(params[:id])
+		
 	end
 
 	def new
