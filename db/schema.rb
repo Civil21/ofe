@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106123702) do
+ActiveRecord::Schema.define(version: 20181106204823) do
 
   create_table "contents", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20181106123702) do
     t.string "name"
     t.string "desc"
     t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "get_subjects", force: :cascade do |t|
+    t.integer "subject_id"
+    t.string "get_subject_type"
+    t.integer "get_subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,6 +95,11 @@ ActiveRecord::Schema.define(version: 20181106123702) do
     t.integer "variant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "variants_get_subjects", force: :cascade do |t|
+    t.integer "variant_id"
+    t.integer "subject_id"
   end
 
 end

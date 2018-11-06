@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  variant_id: 1
+  get_subject_type: MyString
+  get_subject_id: 1
+
+two:
+  variant_id: 1
+  get_subject_type: MyString
+  get_subject_id: 1

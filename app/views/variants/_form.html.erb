@@ -8,12 +8,14 @@
 	<%= f.check_box :belongs_event,{}, true, false%>
 	<div id='event_select', style="display:none;">
 	Вибір подіїї якій належить
-	<%= f.select :event_id, @events.collect { |p| [ p.name, p.id ] },include_blank: true %>
+	<%= f.select :event_id, @events.collect { |event| [ event.name, event.id ] },include_blank: true %>
 	</div>
 	<div id='variant_select', style="display:block;">
 	Вибір варіанту якому належить
-	<%= f.select :variant_id, @variants.collect { |p| [ p.name, p.id ] },include_blank: true %>
+	<%= f.select :variant_id, @variants.collect { |variant| [ variant.name, variant.id ] },include_blank: true %>
 	</div>
+
+	<%= f.select(:get_subjects, @subjects.collect{|subject|[subject.name, subject.id]},{include_blank: true},{multiple: true} )%>
 	
 	<%= f.submit :save %>
 
