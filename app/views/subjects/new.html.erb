@@ -1,2 +1,3 @@
-<h1>Subjects#new</h1>
-<p>Find me in app/views/subjects/new.html.erb</p>
+<%=form_for :subject, url:subjects_path() do |f| %>
+	<%=render 'subjects/form', f:f %>
+<%end%>

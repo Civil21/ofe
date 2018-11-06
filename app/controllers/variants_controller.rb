@@ -51,9 +51,4 @@ class VariantsController < ApplicationController
 		params.require(:variant).permit(:name,:desc,:event_id,:variant_id)
 	end
 
-	def thisUser
-		if(current_user.id != 1)
-			redirect_to root_path 
-		end
-	end
 end
