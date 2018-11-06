@@ -43,7 +43,7 @@ end
 
 gem 'figaro'
 
-gem 'pg'
+#gem 'pg'
 
 gem 'devise'
 
