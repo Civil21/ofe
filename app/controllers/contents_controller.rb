@@ -5,10 +5,12 @@ class ContentsController < ApplicationController
 	before_action :thisUser, only:[:edit,:update]
 
 	def show
-		
+		@subjects = @content.subjects
+		@statuses = @content.statuses
 	end
 
 	def new
+
 	end
 
 	def create
@@ -38,12 +40,6 @@ class ContentsController < ApplicationController
 
 	def content_params
 		params.require(:content).permit(:name,:user_id)
-	end
-
-	def thisUser
-		if(current_user.id != @content.user.id)
-			redirect_to content_path(current_user.content.id) 
-		end
 	end
 
 	def check_content

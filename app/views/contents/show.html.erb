@@ -1,2 +1,21 @@
 <h1>This is show page from content <%=@content.name%></h1>
 <%=link_to "Редагувати", edit_content_path(@content.id)%>
+<hr>
+<h2>Ваші предмети:</h2>
+<%if @subjects != [] %>
+	<%@subjects.each do |subject| %>
+		<%=render 'subjects/subject', subject:subject%>
+	<%end%>
+<%else%>
+	У вас нема суб'єктів
+
+<%end%>
+<hr>
+<h2>Ваші статуси:</h2>
+<%if @statuses != [] %>
+	<%@statuses.each do |status| %>
+		<%=render 'statuses/status', status:status%>
+	<%end%>
+<%else%>
+	Ви ще не отрмали жодного статусу
+<%end%>
