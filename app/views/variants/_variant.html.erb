@@ -1,0 +1,8 @@
+<p>Назва: <%=variant.name%> </p>
+<p>Опис: <%=variant.desc%></p>
+<%if variant.event_id%>
+<p>Належить події: <%=Event.find(variant.event_id).name %></p>
+<%else%>
+<p>Належить варіанту: <%=Variant.find(variant.variant_id).name %></p>
+<%end%>
+<hr>

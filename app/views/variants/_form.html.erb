@@ -1,0 +1,35 @@
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control',autofocus: true %>
+
+	<%= f.label :desc %>
+	<%= f.text_area :desc%>
+
+	<%= f.label :belongs_event%>
+	<%= f.check_box :belongs_event,{}, true, false%>
+	<div id='event_select', style="display:none;">
+	Вибір подіїї якій належить
+	<%= f.select :event_id, @events.collect { |p| [ p.name, p.id ] },include_blank: true %>
+	</div>
+	<div id='variant_select', style="display:block;">
+	Вибір варіанту якому належить
+	<%= f.select :variant_id, @variants.collect { |p| [ p.name, p.id ] },include_blank: true %>
+	</div>
+	
+	<%= f.submit :save %>
+
+<script type="text/javascript">
+// обробляє чек-бокс і виводить або вибір події або вибір варіанту
+  var checkbox = document.getElementById('variant_belongs_event');
+  var event_select = document.getElementById('event_select');
+  var variant_select = document.getElementById('variant_select')
+  checkbox.onchange = function() {
+     if(this.checked) {
+
+       event_select.style['display'] = 'block';
+       variant_select.style['display'] = 'none';
+     } else {
+       event_select.style['display'] = 'none';
+       variant_select.style['display'] = 'block';
+     }
+  };
+</script>

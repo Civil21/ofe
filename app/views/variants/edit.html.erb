@@ -1,0 +1,3 @@
+<%=form_for @variant, url:variant_path(@variant.id), method: :patch do |f| %>
+	<%=render 'variants/form', f:f %>
+<%end%>

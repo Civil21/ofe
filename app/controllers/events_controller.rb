@@ -32,7 +32,7 @@ class EventsController < 	ApplicationController
 
 	private
 
-	def get_eventше
+	def get_event
 		@event = Event.find(params[:id])
 	end
 
