@@ -39,10 +39,4 @@ class EventsController < 	ApplicationController
 	def event_params
 		params.require(:event).permit(:name,:desc,:project_id)
 	end
-
-	def thisUser
-		if(current_user.id != 1)
-			redirect_to root_path 
-		end
-	end
 end

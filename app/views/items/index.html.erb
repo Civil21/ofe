@@ -1,0 +1,2 @@
+<h2>Предмет<%if current_user.id=1%><%=link_to "+", new_item_path %> <%end%>:</h2> 
+<%=render @items %>

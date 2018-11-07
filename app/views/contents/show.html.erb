@@ -2,9 +2,9 @@
 <%=link_to "Редагувати", edit_content_path(@content.id)%>
 <hr>
 <h2>Ваші предмети:</h2>
-<%if @subjects != [] %>
-	<%@subjects.each do |subject| %>
-		<%=render 'subjects/subject', subject:subject%>
+<%if @items != [] %>
+	<%@items.each do |item| %>
+		<%=render 'items/item', item:item%>
 	<%end%>
 <%else%>
 	У вас нема суб'єктів

@@ -5,7 +5,7 @@ class ContentsController < ApplicationController
 	before_action :thisUser, only:[:edit,:update]
 
 	def show
-		@subjects = @content.subjects
+		@items = @content.items
 		@statuses = @content.statuses
 	end
 

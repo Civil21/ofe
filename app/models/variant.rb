@@ -1,3 +1,3 @@
 class Variant < ApplicationRecord
-	has_many :get_subjects
+	has_many :gets, as: :subject
 end

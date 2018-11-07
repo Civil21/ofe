@@ -5,9 +5,9 @@ class VariantsController < ApplicationController
 
 	def index
 		@variants =Variant.all 
-		@get_subjects = []
+		@get_items = []
 		@variants.each{|variant|
-			@get_subjects[variant.id]=get_subjects(variant)
+			@get_items[variant.id]= nil
 		}
 	end
 
@@ -15,7 +15,7 @@ class VariantsController < ApplicationController
 		# для виобру проекта якому належать, можливо потрібно буде перенести у форму, але так буде правильніше
 		@events = Event.all
 		@variants =Variant.all 
-		@subjects =Subject.all
+		@items =Item.all
 	end
 
 	def create
@@ -25,10 +25,13 @@ class VariantsController < ApplicationController
 			params[:variant][:event_id]= nil
 		end
 		@variant=Variant.create(variant_params)
-		@subjects= Subject.find_by(id: params[:variant][:get_subjects])
-		pp @subjects
+		@items= Item.where(id: params[:variant][:get_items])
+		pp @items
+		@items.each{|item|
+			Get.create(object: item, subject: @variant)
+		}
   		if @variant.save
-  			add_get(@variant,@subjects)
+  			# тут повинне бути добавлення
 			redirect_to variants_path	
     	else
   			render 'new'
@@ -38,7 +41,7 @@ class VariantsController < ApplicationController
 	def edit
 		@events = Event.all
 		@variants =Variant.all 
-		@subjects =Subject.all
+		@items =Item.all
 	end
 
 	def update
@@ -52,21 +55,6 @@ class VariantsController < ApplicationController
 	end
 
 	private
-
-	def get_subjects(object)
-		return GetSubject.where(get_subject_type: object.class.name, get_subject_id: object.id)
-	end
-
-	def add_get(object,subjects)
-		GetSubject.where(get_subject_type: object.class.name, get_subject_id: object.id).each{|subject|
-			subject.delete
-		}
-		if subjects != nil
-			subjects.each{|subject|
-				GetSubject.create(subject_id: subject.id, get_subject_type: object.class.name, get_subject_id: object.id)
-			}
-		end
-	end
 
 	def get_variant
 		@variant = Variant.find(params[:id])
