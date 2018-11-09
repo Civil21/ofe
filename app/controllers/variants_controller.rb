@@ -5,9 +5,9 @@ class VariantsController < ApplicationController
 
 	def index
 		@variants =Variant.all 
-		@get_items = []
+		@items = []
 		@variants.each{|variant|
-			@get_items[variant.id]= nil
+			@items[variant.id]= variant.objects("Item")
 		}
 	end
 
@@ -28,7 +28,7 @@ class VariantsController < ApplicationController
 		@items= Item.where(id: params[:variant][:get_items])
 		pp @items
 		@items.each{|item|
-			Get.create(object: item, subject: @variant)
+			Profit.create(object: item, subject: @variant)
 		}
   		if @variant.save
   			# тут повинне бути добавлення

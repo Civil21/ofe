@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
 	belongs_to :project
-	has_many :gets, as: :subject
+	has_many :profits, as: :subject
 end

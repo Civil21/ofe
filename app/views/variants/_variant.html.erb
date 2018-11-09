@@ -5,7 +5,8 @@
 <%else%>
 <p>Належить варіанту: <%=Variant.find(variant.variant_id).name %></p>
 <%end%>
-<!--  
-
--->
+<p><%@items[variant.id].each do |item|%>
+<%=item.name%>  /
+<%end%>
+</p>
 <hr>

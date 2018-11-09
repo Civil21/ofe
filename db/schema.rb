@@ -64,18 +64,18 @@ ActiveRecord::Schema.define(version: 20181107111532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "gets", force: :cascade do |t|
-    t.string "object_type"
-    t.integer "object_id"
-    t.string "subject_type"
-    t.integer "subject_id"
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "desc"
+  create_table "profits", force: :cascade do |t|
+    t.string "object_type"
+    t.integer "object_id"
+    t.string "subject_type"
+    t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
