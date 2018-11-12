@@ -5,9 +5,15 @@ class VariantsController < ApplicationController
 
 	def index
 		@variants =Variant.all 
-		@items = []
+		@profit_items = []
+		@profit_statuses = []
+		@need_items=[]
+		@need_statuses= []
 		@variants.each{|variant|
-			@items[variant.id]= variant.objects("Item")
+			@profit_items[variant.id]= variant.profit_objects("Item")
+			@profit_statuses[variant.id]=variant.profit_objects("Status")
+			@need_items[variant.id]= variant.need_objects("Item")
+			@need_statuses[variant.id]=variant.need_objects("Status")
 		}
 	end
 
@@ -16,6 +22,7 @@ class VariantsController < ApplicationController
 		@events = Event.all
 		@variants =Variant.all 
 		@items =Item.all
+		@statuses = Status.all
 	end
 
 	def create
@@ -25,13 +32,28 @@ class VariantsController < ApplicationController
 			params[:variant][:event_id]= nil
 		end
 		@variant=Variant.create(variant_params)
-		@items= Item.where(id: params[:variant][:get_items])
-		pp @items
-		@items.each{|item|
-			Profit.create(object: item, subject: @variant)
-		}
+
+		@profit_items= Item.where(id: params[:variant][:profit_items])
+		@profit_statuses= Status.where(id: params[:variant][:profit_statuses])
+
+		@need_items= Item.where(id: params[:variant][:need_items])
+		@need_statuses= Status.where(id: params[:variant][:need_statuses])
+
   		if @variant.save
-  			# тут повинне бути добавлення
+  			@profit_items.each{|item|
+			Profit.create(object: item, subject: @variant)
+			}
+  			@profit_statuses.each{|status|
+			Profit.create(object: status, subject: @variant)
+			}
+
+  			@need_items.each{|item|
+			Need.create(object: item, subject: @variant)
+			}
+  			@need_statuses.each{|status|
+			Need.create(object: status, subject: @variant)
+			}
+
 			redirect_to variants_path	
     	else
   			render 'new'

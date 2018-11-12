@@ -14,9 +14,26 @@
 	Вибір варіанту якому належить
 	<%= f.select :variant_id, @variants.collect { |variant| [ variant.name, variant.id ] },include_blank: true %>
 	</div>
+	<h5>Видає за варіант</h5>
+	<p>
+	<%= f.label :profit_items%>
+	<%= f.select(:profit_items, @items.collect{|item|[item.name, item.id]},{},{multiple: true} )%>
+	</p>
 
-	<%= f.select(:get_items, @items.collect{|item|[item.name, item.id]},{},{multiple: true} )%>
-	
+	<p>
+	<%= f.label :profit_statuses%>
+	<%= f.select(:profit_statuses, @statuses.collect{|status|[status.name, status.id]},{},{multiple: true} )%>
+	</p>
+	<h5>Необхідно для варіанта</h5>
+	<p>
+	<%= f.label :need_items%>
+	<%= f.select(:need_items, @items.collect{|item|[item.name, item.id]},{},{multiple: true} )%>
+	</p>
+
+	<p>
+	<%= f.label :need_statuses%>
+	<%= f.select(:need_statuses, @statuses.collect{|status|[status.name, status.id]},{},{multiple: true} )%>
+	</p>
 	<%= f.submit :save %>
 
 <script type="text/javascript">

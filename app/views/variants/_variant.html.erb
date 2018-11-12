@@ -5,8 +5,22 @@
 <%else%>
 <p>Належить варіанту: <%=Variant.find(variant.variant_id).name %></p>
 <%end%>
-<p><%@items[variant.id].each do |item|%>
+Отримувані:
+<p><%@profit_items[variant.id].each do |item|%>
 <%=item.name%>  /
+<%end%>
+</p>
+<p><%@profit_statuses[variant.id].each do |status|%>
+<%=status.name%>  /
+<%end%>
+</p>
+Потрібні:
+<p><%@need_items[variant.id].each do |item|%>
+<%=item.name%>  /
+<%end%>
+</p>
+<p><%@need_statuses[variant.id].each do |status|%>
+<%=status.name%>  /
 <%end%>
 </p>
 <hr>
